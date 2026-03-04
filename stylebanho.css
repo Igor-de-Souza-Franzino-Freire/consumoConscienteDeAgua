@@ -3,7 +3,7 @@
     --fg: #12281d;
     --accent: #efe4ae;
     --muted: #3a3a3a;
-    --ring-size: min(260px, 72vw);
+    --ring-size: min(360px, 72vw);
   }
 
   body {
@@ -15,7 +15,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    gap: 5rem;
     padding: 2rem;
   }
 
@@ -41,16 +41,16 @@
   }
   .digits {
     font-family: "Cormorant SC", serif;
-    font-size: clamp(2.4rem, 10vw, 3.8rem);
+    font-size: clamp(5.4rem, 10vw, 3.8rem);
     font-weight: 800; letter-spacing: -0.04em; line-height: 1;
     transition: color 0.4s;
   }
-  .unit { font-size: 0.7rem; color: #888; letter-spacing: 0.15em; text-transform: uppercase; }
+  .unit { font-size: 1.2rem; color: #888; letter-spacing: 0.15em; text-transform: uppercase; }
 
   /* ── Botões ── */
   .controls { display: flex; gap: 1rem; }
   .btn {
-    font-family: "Cormorant SC", serif; font-size: 0.85rem;
+    font-family: "Cormorant SC", serif; font-size: 1.4rem;
     letter-spacing: 0.08em; padding: 0.7rem 1.8rem;
     border-radius: 999px; border: 1.5px solid var(--muted);
     background: transparent; color: var(--accent); cursor: pointer; transition: all 0.2s;
@@ -62,24 +62,24 @@
 
   /* ── Mensagem ── */
   .message-box {
-    max-width: 340px; width: 100%;
+    max-width: 400px; width: 100%;
     background: #1a1a1a; border: 1px solid var(--muted);
     border-radius: 1.2rem; padding: 1.4rem 1.8rem; text-align: center;
     opacity: 0; transform: translateY(16px);
     transition: opacity 0.5s, transform 0.5s; pointer-events: none;
   }
   .message-box.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
-  .message-box .emoji { font-size: 2rem; margin-bottom: 0.5rem; }
-  .message-box .msg-title { font-family: "Cormorant SC", serif; font-size: 1.05rem; color: var(--accent); margin-bottom: 0.4rem; }
-  .message-box .msg-text { font-size: 0.82rem; color: #aaa; line-height: 1.6; }
+  .message-box .emoji { font-size: 2.5rem; margin-bottom: 0.5rem; }
+  .message-box .msg-title { font-family: "Cormorant SC", serif; font-size: 2.05rem; color: var(--accent); margin-bottom: 0.4rem; }
+  .message-box .msg-text { font-size: 1.0rem; color: #aaa; line-height: 1.6; }
 
   /* ── Histórico ── */
-  .history-wrap { width: 100%; max-width: 340px; }
-  .history-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem; }
-  .history-title { font-family: "Cormorant SC", serif; font-size: 0.95rem; color: var(--accent); }
+  .history-wrap { width: 100%; max-width: 400px; }
+  .history-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2.0rem; }
+  .history-title { font-family: "Cormorant SC", serif; font-size: 1.95rem; color: var(--accent); }
 
   .btn-clear {
-    font-family: "Cormorant SC", serif; font-size: 0.72rem;
+    font-family: "Cormorant SC", serif; font-size: 0.90rem;
     background: transparent; border: 1px solid var(--muted);
     color: #666; padding: 0.25rem 0.8rem; border-radius: 999px;
     cursor: pointer; transition: all 0.2s;

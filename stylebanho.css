@@ -78,7 +78,7 @@
         }
         .btn {
             font-family: "Cormorant SC", serif;
-            font-size: clamp(1rem, 3.5vw, 1.4rem); /* MUDANÇA 13: fonte fluida nos botões */
+            font-size: clamp(0.5rem, 3.5vw, 1.3rem); /* MUDANÇA 13: fonte fluida nos botões */
             letter-spacing: 0.08em;
             padding: clamp(0.5rem, 1.5vw, 0.7rem) clamp(1rem, 3vw, 1.8rem); /* MUDANÇA 14: padding fluido */
             border-radius: 999px; border: 1.5px solid var(--muted);

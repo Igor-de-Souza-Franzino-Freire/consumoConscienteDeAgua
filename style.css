@@ -30,6 +30,9 @@ body {
     font-size: 4.5em;
     color: var(--fontcolor);
     width: 80%;
+    border-style: solid;
+    background-color: var(--bg);
+    opacity: 0.9;
   }
 
   h2 {
@@ -90,10 +93,11 @@ body {
   }
 
   div button  {
+    position: sticky;
     background-color: var(--fontcolor);
     border: none;
     font-family: var(--fontletter);
-    padding: 20px 40px;
+    padding: 20px 44px;
     border-radius: 20px;
     text-align: center;
     text-decoration: none;
@@ -109,8 +113,8 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    max-width: 2100px;
+    height: 1050px;
     z-index: -1;
   }
 }

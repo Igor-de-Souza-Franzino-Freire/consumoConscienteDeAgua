@@ -1,161 +1,165 @@
 :root {
-            --bg: #12281d;
-            --fg: #12281d;
-            --fontcolor: #efe4ae;
-            --fontletter: "Cormorant SC", serif;
-        }
+  --bg: #12281d;
+  --fg: #12281d;
+  --fontcolor: #efe4ae;
+  --fontletter: "Cormorant SC", serif;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+html {
+  scroll-behavior: smooth;
+}
 
-        /* MUDANÇA 1: Reset global aplicado fora do body para evitar conflitos */
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
+/* MUDANÇA 1: Reset global aplicado fora do body para evitar conflitos */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-        body {
-            margin: 0;
-            padding: 0;
-            min-width: 280px;
-            background-color: var(--bg);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            /* MUDANÇA 2: height: 205vh substituído por min-height para o conteúdo crescer naturalmente */
-            min-height: 100vh;
-            width: 100%;
-            overflow-x: hidden;
-        }
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 280px;
+  background-color: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* MUDANÇA 2: height: 205vh substituído por min-height para o conteúdo crescer naturalmente */
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
 
-        /* MUDANÇA 3: nav próprio no lugar de <ul> usada como navbar — semântica e layout mais corretos */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: var(--fontcolor);
-            z-index: 100;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            padding: 0 16px;
-        }
+/* MUDANÇA 3: nav próprio no lugar de <ul> usada como navbar — semântica e layout mais corretos */
+nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background-color: var(--fontcolor);
+  z-index: 100;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 16px;
+  font-size: 130%;
+}
 
-        nav a {
-            display: block;
-            color: var(--fg);
-            font-family: var(--fontletter);
-            font-size: 1.4em;
-            text-decoration: none;
-            padding: 14px 16px;
-        }
+nav a {
+  display: block;
+  color: var(--fg);
+  font-family: var(--fontletter);
+  font-size: 1.4em;
+  text-decoration: none;
+  padding: 14px 16px;
+}
 
-        nav a:hover {
-            opacity: 0.7;
-        }
+nav a:hover {
+  opacity: 0.7;
+}
 
-        /* MUDANÇA 4: hero section com height: 100svh para ocupar a tela inteira no mobile corretamente */
-        .hero {
-            position: relative;
-            width: 100%;
-            height: 100svh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+/* MUDANÇA 4: hero section com height: 100svh para ocupar a tela inteira no mobile corretamente */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-        .hero img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* MUDANÇA 5: object-fit: cover para a imagem preencher o hero sem distorção em qualquer tela */
-            object-fit: cover;
-            z-index: 0;
-        }
+.hero img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* MUDANÇA 5: object-fit: cover para a imagem preencher o hero sem distorção em qualquer tela */
+  object-fit: cover;
+  z-index: 0;
+}
 
-        h1 {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            font-family: var(--fontletter);
-            font-weight: 400;
-            font-style: normal;
-            /* MUDANÇA 6: clamp() para font-size fluido — não quebra em telas pequenas */
-            font-size: clamp(1.8em, 5vw, 4.5em);
-            color: var(--fontcolor);
-            /* MUDANÇA 7: width: min(80%, 900px) evita texto excessivamente largo em monitores grandes */
-            width: min(80%, 900px);
-            border: 2px solid var(--fontcolor);
-            background-color: var(--bg);
-            opacity: 0.9;
-            padding: 16px 24px;
-            /* MUDANÇA 8: removido top/left/transform absolute — o flexbox do .hero centraliza corretamente */
-        }
+h1 {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  font-family: var(--fontletter);
+  font-weight: 400;
+  font-style: normal;
+  /* MUDANÇA 6: clamp() para font-size fluido — não quebra em telas pequenas */
+  font-size: clamp(1.8em, 5vw, 4.5em);
+  color: var(--fontcolor);
+  /* MUDANÇA 7: width: min(80%, 900px) evita texto excessivamente largo em monitores grandes */
+  width: min(80%, 900px);
+  border: 2px solid var(--fontcolor);
+  background-color: var(--bg);
+  opacity: 0.9;
+  padding: 16px 24px;
+  /* MUDANÇA 8: removido top/left/transform absolute — o flexbox do .hero centraliza corretamente */
+}
 
-        /* MUDANÇA 9: seções #about e #iniciar com padding-top para não ficar atrás da nav fixa */
-        #about {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 80px 24px 60px;
-            /* MUDANÇA 10: min-height: 100svh mantém a proporção de "tela cheia" por seção */
-            min-height: 100svh;
-        }
+/* MUDANÇA 9: seções #about e #iniciar com padding-top para não ficar atrás da nav fixa */
+#about {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 24px 60px;
+  /* MUDANÇA 10: min-height: 100svh mantém a proporção de "tela cheia" por seção */
+  min-height: 100svh;
+}
 
-        h2 {
-            text-align: center;
-            font-family: var(--fontletter);
-            font-weight: 300;
-            font-style: normal;
-            /* MUDANÇA 11: clamp() também no h2 */
-            font-size: clamp(1.5em, 4vw, 3.5em);
-            color: var(--fontcolor);
-            width: min(80%, 860px);
-            /* MUDANÇA 12: removido position: absolute — deixamos o fluxo normal do documento trabalhar */
-            margin: 0;
-        }
+h2 {
+  text-align: center;
+  font-family: var(--fontletter);
+  font-weight: 300;
+  font-style: normal;
+  /* MUDANÇA 11: clamp() também no h2 */
+  font-size: clamp(1.5em, 4vw, 3.5em);
+  color: var(--fontcolor);
+  width: min(80%, 860px);
+  /* MUDANÇA 12: removido position: absolute — deixamos o fluxo normal do documento trabalhar */
+  margin: 0;
+  height: 50vh;
+}
 
-        #iniciar {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 24px 80px;
-            min-height: 40vh;
-        }
+#iniciar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 24px 80px;
+  min-height: 40vh;
+}
 
-        #iniciar button {
-            background-color: var(--fontcolor);
-            border: none;
-            font-family: var(--fontletter);
-            /* MUDANÇA 13: clamp() no botão para não ficar gigante em desktop nem minúsculo em mobile */
-            padding: clamp(12px, 2vw, 20px) clamp(24px, 4vw, 44px);
-            border-radius: 20px;
-            text-align: center;
-            font-size: clamp(1.2em, 3vw, 2em);
-            cursor: pointer;
-            transition: opacity 0.2s ease;
-        }
+#iniciar button {
+  background-color: var(--fontcolor);
+  border: none;
+  font-family: var(--fontletter);
+  /* MUDANÇA 13: clamp() no botão para não ficar gigante em desktop nem minúsculo em mobile */
+  padding: clamp(12px, 2vw, 20px) clamp(24px, 4vw, 44px);
+  border-radius: 20px;
+  text-align: center;
+  font-size: clamp(1.2em, 3vw, 2em);
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  position: absolute;
+  bottom: -850px;
+}
 
-        #iniciar button:hover {
-            opacity: 0.8;
-        }
+#iniciar button:hover {
+  opacity: 0.8;
+}
 
-        /* MUDANÇA 14: media query para telas muito pequenas (≤ 360px) — ajuste fino de padding */
-        @media (max-width: 360px) {
-            h1 {
-                font-size: 1.5em;
-                padding: 12px 16px;
-            }
+/* MUDANÇA 14: media query para telas muito pequenas (≤ 360px) — ajuste fino de padding */
+@media (max-width: 360px) {
+  h1 {
+    font-size: 1.5em;
+    padding: 12px 16px;
+  }
 
-            h2 {
-                font-size: 1.3em;
-            }
-        }
-
-
-     
+  h2 {
+    font-size: 1.3em;
+  }
+}

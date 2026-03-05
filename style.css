@@ -107,7 +107,7 @@ h1 {
   align-items: center;
   padding: 80px 24px 60px;
   /* MUDANÇA 10: min-height: 100svh mantém a proporção de "tela cheia" por seção */
-  min-height: 70svh;
+  min-height: 60svh;
 }
 
 h2 {

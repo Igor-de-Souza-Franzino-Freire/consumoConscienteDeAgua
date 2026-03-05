@@ -107,7 +107,7 @@ h1 {
   align-items: center;
   padding: 80px 24px 60px;
   /* MUDANÇA 10: min-height: 100svh mantém a proporção de "tela cheia" por seção */
-  min-height: 100svh;
+  min-height: 70svh;
 }
 
 h2 {
@@ -128,9 +128,10 @@ h2 {
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 40px 24px 80px;
+  align-items: flex-start;
+  padding: 0px 24px 80px;
   min-height: 40vh;
+
 }
 
 #iniciar button {
@@ -144,8 +145,7 @@ h2 {
   font-size: clamp(1.2em, 3vw, 2em);
   cursor: pointer;
   transition: opacity 0.2s ease;
-  position: absolute;
-  bottom: -850px;
+  
 }
 
 #iniciar button:hover {

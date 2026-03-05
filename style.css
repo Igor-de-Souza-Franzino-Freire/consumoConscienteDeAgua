@@ -121,7 +121,7 @@ h2 {
   width: min(80%, 860px);
   /* MUDANÇA 12: removido position: absolute — deixamos o fluxo normal do documento trabalhar */
   margin: 0;
-  height: 50vh;
+  height: 15vh;
 }
 
 #iniciar {

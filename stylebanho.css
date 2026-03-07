@@ -1,166 +1,277 @@
 :root {
-            --bg: #12281d;
-            --fg: #12281d;
-            --accent: #efe4ae;
-            --muted: #3a3a3a;
-            /* MUDANÇA 1: ring-size com clamp em vez de min() para escalar melhor entre mobile pequeno e desktop */
-            --ring-size: clamp(220px, 72vw, 360px);
-        }
+  --bg: #12281d;
+  --fg: #12281d;
+  --accent: #efe4ae;
+  --muted: #3a3a3a;
+  --ring-size: clamp(220px, 72vw, 360px);
+}
 
-        /* MUDANÇA 2: reset global para garantir box-sizing consistente */
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
 
-        body {
-            background: var(--bg);
-            color: var(--fg);
-            font-family: "Cormorant SC", serif;
-            min-height: 100svh; /* MUDANÇA 3: 100svh evita o corte da barra do browser no iOS/Android */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            /* MUDANÇA 4: gap reduzido com clamp para não empurrar itens pra fora da tela em mobile */
-            gap: clamp(1.5rem, 5vw, 5rem);
-            /* MUDANÇA 5: padding horizontal maior em mobile para as bordas não colarem nos elementos */
-            padding: clamp(1rem, 4vw, 2rem);
-            /* MUDANÇA 6: overflow-x hidden para evitar scroll lateral acidental */
-            overflow-x: hidden;
-        }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-        h1 {
-            font-family: "Cormorant SC", serif;
-            font-size: clamp(1.4rem, 5vw, 2.4rem);
-            letter-spacing: -0.03em;
-            color: var(--accent);
-            text-align: center; /* MUDANÇA 7: centraliza o título em telas estreitas */
-            margin: 0;
-        }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Cormorant SC", serif;
+  min-height: 100svh; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.5rem, 5vw, 5rem);
+  padding: clamp(1rem, 4vw, 2rem);
+  overflow-x: hidden;
+}
 
-        /* ── Anel ── */
-        .ring-wrap {
-            position: relative;
-            width: var(--ring-size);
-            height: var(--ring-size);
-            /* MUDANÇA 8: flex-shrink: 0 impede o anel de ser comprimido em viewports muito pequenas */
-            flex-shrink: 0;
-        }
-        .ring-wrap svg { width: 100%; height: 100%; transform: rotate(-90deg); }
-        .ring-bg { fill: none; stroke: var(--muted); stroke-width: 6; }
-        .ring-progress {
-            fill: none; stroke: var(--accent); stroke-width: 6; stroke-linecap: round;
-            transition: stroke-dashoffset 0.1s linear, stroke 0.4s;
-        }
-        .time-display {
-            position: absolute; inset: 0;
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center; gap: 0.2rem;
-        }
-        .digits {
-            font-family: "Cormorant SC", serif;
-            /* MUDANÇA 9: clamp corrigido — o original tinha min > max (5.4rem vs 3.8rem invertidos) */
-            font-size: clamp(3.2rem, 10vw, 5.4rem);
-            font-weight: 800; letter-spacing: -0.04em; line-height: 1;
-            transition: color 0.4s;
-        }
-        .unit {
-            font-size: clamp(0.7rem, 2vw, 1.2rem); /* MUDANÇA 10: unit também responsivo */
-            color: #888; letter-spacing: 0.15em; text-transform: uppercase;
-        }
+h1 {
+  font-family: "Cormorant SC", serif;
+  font-size: clamp(1.4rem, 5vw, 2.4rem);
+  letter-spacing: -0.03em;
+  color: var(--accent);
+  text-align: center;
+  margin: 0;
+}
 
-        /* ── Botões ── */
-        .controls {
-            display: flex;
-            gap: clamp(0.5rem, 2vw, 1rem); /* MUDANÇA 11: gap fluido entre botões */
-            flex-wrap: wrap; /* MUDANÇA 12: wrap para não vazar em telas muito estreitas */
-            justify-content: center;
-        }
-        .btn {
-            font-family: "Cormorant SC", serif;
-            font-size: clamp(0.5rem, 3.5vw, 1.3rem); /* MUDANÇA 13: fonte fluida nos botões */
-            letter-spacing: 0.08em;
-            padding: clamp(0.5rem, 1.5vw, 0.7rem) clamp(1rem, 3vw, 1.8rem); /* MUDANÇA 14: padding fluido */
-            border-radius: 999px; border: 1.5px solid var(--muted);
-            background: transparent; color: var(--accent); cursor: pointer; transition: all 0.2s;
-            white-space: nowrap; /* MUDANÇA 15: impede quebra de texto dentro do botão */
-        }
-        .btn:hover { border-color: var(--accent); color: var(--accent); }
-        .btn.primary { background: var(--accent); color: var(--bg); border-color: var(--accent); font-weight: 500; }
-        .btn.primary:hover { filter: brightness(1.1); }
-        .btn:disabled { opacity: 0.3; cursor: not-allowed; }
+/* ── Anel ── */
+.ring-wrap {
+  position: relative;
+  width: var(--ring-size);
+  height: var(--ring-size);
+  flex-shrink: 0;
+}
+.ring-wrap svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+.ring-bg {
+  fill: none;
+  stroke: var(--muted);
+  stroke-width: 6;
+}
+.ring-progress {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 6;
+  stroke-linecap: round;
+  transition:
+    stroke-dashoffset 0.1s linear,
+    stroke 0.4s;
+}
+.time-display {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+}
+.digits {
+  font-family: "Cormorant SC", serif;
+  font-size: clamp(3.2rem, 10vw, 5.4rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  transition: color 0.4s;
+}
+.unit {
+  font-size: clamp(0.7rem,2vw,1.2rem); 
+  color: #888;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
 
-        /* ── Mensagem ── */
-        .message-box {
-            /* MUDANÇA 16: max-width com width: min() para não vazar em telas estreitas */
-            width: min(400px, 90vw);
-            background: #1a1a1a; border: 1px solid var(--muted);
-            border-radius: 1.2rem;
-            padding: clamp(1rem, 3vw, 1.4rem) clamp(1rem, 4vw, 1.8rem); /* MUDANÇA 17: padding fluido */
-            text-align: center;
-            opacity: 0; transform: translateY(16px);
-            transition: opacity 0.5s, transform 0.5s; pointer-events: none;
-        }
-        .message-box.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
-        .message-box .emoji { font-size: clamp(1.8rem, 5vw, 2.5rem); margin-bottom: 0.5rem; } /* MUDANÇA 18 */
-        .message-box .msg-title {
-            font-family: "Cormorant SC", serif;
-            font-size: clamp(1.4rem, 4vw, 2.05rem); /* MUDANÇA 19 */
-            color: var(--accent); margin-bottom: 0.4rem;
-        }
-        .message-box .msg-text { font-size: clamp(0.85rem, 2.5vw, 1rem); color: #aaa; line-height: 1.6; } /* MUDANÇA 20 */
+/* ── Botões ── */
+.controls {
+  display: flex;
+  gap: clamp(0.5rem, 2vw, 1rem); 
+  flex-wrap: wrap; 
+  justify-content: center;
+}
+.btn {
+  font-family: "Cormorant SC", serif;
+  font-size: clamp(
+    0.5rem,
+    3.5vw,
+    1.3rem
+  );
+  letter-spacing: 0.08em;
+  padding: clamp(0.5rem, 1.5vw, 0.7rem) clamp(1rem, 3vw, 1.8rem);
+  border-radius: 999px;
+  border: 1.5px solid var(--muted);
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap; 
+}
+.btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.btn.primary {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+  font-weight: 500;
+}
+.btn.primary:hover {
+  filter: brightness(1.1);
+}
+.btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
 
-        /* ── Histórico ── */
-        .history-wrap {
-            width: min(400px, 90vw); /* MUDANÇA 21: mesma lógica da message-box */
-        }
-        .history-header {
-            display: flex; align-items: center; justify-content: space-between;
-            margin-bottom: clamp(1rem, 3vw, 2rem); /* MUDANÇA 22 */
-        }
-        .history-title {
-            font-family: "Cormorant SC", serif;
-            font-size: clamp(1.3rem, 4vw, 1.95rem); /* MUDANÇA 23 */
-            color: var(--accent);
-        }
+/* Mensagem */
+.message-box {
+  width: min(400px, 90vw);
+  background: #1a1a1a;
+  border: 1px solid var(--muted);
+  border-radius: 1.2rem;
+  padding: clamp(1rem, 3vw, 1.4rem) clamp(1rem, 4vw, 1.8rem);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.5s,
+    transform 0.5s;
+  pointer-events: none;
+}
+.message-box.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.message-box .emoji {
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  margin-bottom: 0.5rem;
+}
+.message-box .msg-title {
+  font-family: "Cormorant SC", serif;
+  font-size: clamp(1.4rem, 4vw, 2.05rem);
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+.message-box .msg-text {
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  color: #aaa;
+  line-height: 1.6;
+}
+/* Histórico  */
+.history-wrap {
+  width: min(400px, 90vw); 
+}
+.history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: clamp(1rem, 3vw, 2rem); 
+}
+.history-title {
+  font-family: "Cormorant SC", serif;
+  font-size: clamp(1.3rem, 4vw, 1.95rem);
+  color: var(--accent);
+}
 
-        .btn-clear {
-            font-family: "Cormorant SC", serif; font-size: 0.90rem;
-            background: transparent; border: 1px solid var(--muted);
-            color: #666; padding: 0.25rem 0.8rem; border-radius: 999px;
-            cursor: pointer; transition: all 0.2s;
-            white-space: nowrap; /* MUDANÇA 24 */
-        }
-        .btn-clear:hover { border-color: #ff5a5a; color: #ff5a5a; }
+.btn-clear {
+  font-family: "Cormorant SC", serif;
+  font-size: 0.9rem;
+  background: transparent;
+  border: 1px solid var(--muted);
+  color: #666;
+  padding: 0.25rem 0.8rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap; 
+}
+.btn-clear:hover {
+  border-color: #ff5a5a;
+  color: #ff5a5a;
+}
 
-        .history-list {
-            display: flex; flex-direction: column; gap: 0.5rem;
-            max-height: 220px; overflow-y: auto; padding-right: 0.2rem;
-        }
-        .history-list::-webkit-scrollbar { width: 4px; }
-        .history-list::-webkit-scrollbar-thumb { background: var(--muted); border-radius: 999px; }
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 220px;
+  overflow-y: auto;
+  padding-right: 0.2rem;
+}
+.history-list::-webkit-scrollbar {
+  width: 4px;
+}
+.history-list::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 999px;
+}
 
-        .history-item {
-            display: flex; align-items: center; gap: 0.75rem;
-            background: #efe4ae; border: 1px solid var(--muted);
-            border-radius: 0.8rem; padding: 0.65rem 1rem;
-            animation: slideIn 0.3s ease;
-        }
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(-8px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-        .h-emoji { font-size: 1.2rem; }
-        .h-info  { flex: 1; min-width: 0; } /* MUDANÇA 25: min-width: 0 evita overflow de texto em flex */
-        .h-time  { font-family: "Cormorant SC", serif; font-size: 0.95rem; font-weight: 700; color: var(--fg); }
-        .h-label { font-size: 0.72rem; color: var(--fg); margin-top: 0.1rem;
-                   /* MUDANÇA 26: trunca texto longo no histórico em mobile */
-                   white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .h-clock { font-size: 0.72rem; color: var(--fg); white-space: nowrap; }
-        .saved-badge { font-size: 0.65rem; color: var(--accent); text-align: right; margin-top: 0.5rem; letter-spacing: 0.05em; }
+.history-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #efe4ae;
+  border: 1px solid var(--muted);
+  border-radius: 0.8rem;
+  padding: 0.65rem 1rem;
+  animation: slideIn 0.3s ease;
+}
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.h-emoji {
+  font-size: 1.2rem;
+}
+.h-info {
+  flex: 1;
+  min-width: 0;
+} 
+.h-time {
+  font-family: "Cormorant SC", serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--fg);
+}
+.h-label {
+  font-size: 0.72rem;
+  color: var(--fg);
+  margin-top: 0.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.h-clock {
+  font-size: 0.72rem;
+  color: var(--fg);
+  white-space: nowrap;
+}
+.saved-badge {
+  font-size: 0.65rem;
+  color: var(--accent);
+  text-align: right;
+  margin-top: 0.5rem;
+  letter-spacing: 0.05em;
+}
 
-        /* MUDANÇA 27: media query para telas muito pequenas (≤ 360px) — ajuste fino */
-        @media (max-width: 360px) {
-            .controls { gap: 0.4rem; }
-            .btn { padding: 0.4rem 0.8rem; font-size: 0.9rem; }
-        }
+@media (max-width: 360px) {
+  .controls {
+    gap: 0.4rem;
+  }
+  .btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}

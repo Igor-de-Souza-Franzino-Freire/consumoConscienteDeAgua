@@ -52,7 +52,15 @@ const messages = [
 const STORAGE_KEY = "timer_historico";
 const CIRC = 2 * Math.PI * 44;
 const CYCLE = 60;
-const CORES = ["#efe4ae", "#5aff8c", "#71ff8d", "#61ffea", "#fda654", "#ff8000", "#ff0000"];
+const CORES = [
+  "#efe4ae",
+  "#5aff8c",
+  "#71ff8d",
+  "#61ffea",
+  "#fda654",
+  "#ff8000",
+  "#ff0000",
+];
 
 let elapsed = 0,
   interval = null,
@@ -74,7 +82,7 @@ const btnClear = document.getElementById("btn-clear");
 ring.style.strokeDasharray = CIRC;
 ring.style.strokeDashoffset = CIRC;
 
-// ── localStorage ────────────────────────────────────
+// localStorage para historico
 function carregarHistorico() {
   try {
     return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
@@ -87,7 +95,6 @@ function salvarHistorico(hist) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(hist));
 }
 
-// ── Helpers ─────────────────────────────────────────
 function pad(n) {
   return String(n).padStart(2, "0");
 }
@@ -106,7 +113,6 @@ function updateDisplay() {
   digits.style.color = cor;
 }
 
-// ── Renderiza item na lista ──────────────────────────
 function renderItem(entry, prepend = true) {
   const item = document.createElement("div");
   item.className = "history-item";
@@ -122,7 +128,7 @@ function renderItem(entry, prepend = true) {
   histWrap.style.display = "block";
 }
 
-// ── Carrega histórico salvo ao abrir a página ────────
+// Carrega histórico salvo ao abrir a página
 function inicializarHistorico() {
   const hist = carregarHistorico();
   if (hist.length === 0) return;
@@ -130,7 +136,7 @@ function inicializarHistorico() {
   histWrap.style.display = "block";
 }
 
-// ── Salva e exibe nova entrada ───────────────────────
+// Salva e exibe nova entrada
 function addToHistory() {
   const m = getMsg(elapsed);
   const agora = new Date().toLocaleString("pt-BR", {
@@ -148,7 +154,7 @@ function addToHistory() {
 
   const hist = carregarHistorico();
   hist.unshift(entry);
-  salvarHistorico(hist); // 💾 persiste no navegador
+  salvarHistorico(hist); // persiste no navegador
   renderItem(entry);
 }
 
@@ -198,11 +204,10 @@ btnReset.addEventListener("click", () => {
 });
 
 btnClear.addEventListener("click", () => {
-  localStorage.removeItem(STORAGE_KEY); // 🗑️ apaga do navegador
+  localStorage.removeItem(STORAGE_KEY); // apaga do navegador
   histList.innerHTML = "";
   histWrap.style.display = "none";
 });
 
-// ── Init ─────────────────────────────────────────────
 updateDisplay();
 inicializarHistorico();

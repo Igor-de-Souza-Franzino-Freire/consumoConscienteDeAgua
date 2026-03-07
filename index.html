@@ -1,36 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Consumo Sustentável</title>
-    <link rel="stylesheet" href="style.css">
-
-</head>
-<body>
-<nav>
-        <a href="#about">Sobre</a>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav>
+      <a href="#about">Sobre</a>
     </nav>
 
-    <!-- MUDANÇA 16: imagem movida para dentro de .hero para controle de layout correto -->
     <section class="hero">
-        <picture>
-            <source media="(max-width: 600px)" srcset="imagens/aguabonita2.jpeg">
-            <img src="imagens/aguabonita.jpeg" alt="Paisagem de água">
-        </picture>
-        <h1>Um pouco de sustentabilidade por dia pode mudar o mundo</h1>
+      <picture>
+        <source media="(max-width: 600px)" srcset="imagens/aguabonita2.jpeg" />
+        <img src="imagens/aguabonita.jpeg" alt="Paisagem de água" />
+      </picture>
+      <h1>Um pouco de sustentabilidade por dia pode mudar o mundo</h1>
     </section>
 
     <div id="about">
-        <h2>Um site para te ajudar a economizar água durante o banho, contando os minutos e o consumo da quantidade gastada</h2>
+      <h2>
+        Um site para te ajudar a economizar água durante o banho, contando os
+        minutos e o consumo da quantidade gastada
+      </h2>
     </div>
 
     <div id="iniciar">
-        <!-- MUDANÇA 17: onclick inline mantido, mas o margin-bottom: -100vh negativo foi removido (causava sobreposição) -->
-        <button onclick="location.href='banho.html'">Iniciar Atividade</button>
+      <button onclick="location.href = 'banho.html'">Iniciar Atividade</button>
     </div>
-</body>
+  </body>
 </html>
